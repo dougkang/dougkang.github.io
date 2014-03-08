@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Doug Kang's Blog">
+    <meta name="author" content="Doug Kang">
+
+    <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+    <link href="/css/pygments.css" rel="stylesheet">
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/flat-ui.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+    
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="../assets/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <link rel="shortcut icon" href="/images/favicon.png">
+  </head>
+
+  <body>
+
+    <div class="container-narrow">
+
+      <div class="row-fluid">
+        <span class="muted header-title">dgkng</span>
+        <span class="muted pull-right header-title">doug kang</span>
+      </div>
+      <hr>
+
+      <div class="row-fluid">
+        <div class="span8 post-title">
+          <h1>Why I Switched to Jekyll</h1>
+        </div>
+        <div class="span4">
+          <div class="navbar navbar-inverse pull-right">
+            <div class="navbar-inner">
+              <ul class="nav">
+                
+                  <li class="active"><a href="/index.html">Blog</a></li>
+                
+                  <li ><a href="/projects.html">Projects</a></li>
+                
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row-fluid">
+        <div class="span10">
+          <p class="muted">and why I ditched Wordpress</p>
+        </div>
+        <div class="post-date span2">11 Apr 2013</div>
+      </div>
+
+      <div class="row-fluid post-content">
+        <p>I&#8217;ve been using Wordpress for a good 6 or 7 years now and I got pretty good at it, making a couple of plugins and full-fledged themes and such, but when it came down to it, Wordpress just wasn&#8217;t cutting it for me, for one main reason: <em>it&#8217;s too darn heavyweight</em>. For a &#8220;simplified&#8221; blogging interface (and I use that term lightly), I had to stand up a db and execute php, all for a site that barely changes weekly? I don&#8217;t need comments, I don&#8217;t need to change themes, I don&#8217;t need roles, I just need <em>blogging</em></p>
+
+<p>So along comes <a href='http://jekyllrb.com'>Jekyll</a>. I found out about it through a company that was working next to us during my earlier startup days. You write in <a href='http://daringfireball.net/projects/markdown/'>Markdown</a> in whatever editor you like. You compile your blog like a program and it jekyll spits out the site in plain ol&#8217; html which you can serve however you like. As a backend programmer, <em>this makes sense to me</em>. My site doesn&#8217;t change on even a daily basis - why does my blogging framework need to dynamically create the site more or less on every visit?</p>
+
+<p>I laughed a little to myself though, because as I was just starting to learn how to program, I wrote a similar (albeit much more simplistic) thing in C. I called it Janga (it was a time when <a href='http://www.xanga.com'>Xanga</a> was all the rage). I had a directory with my posts, a header and a footer. I would run my Janga program and it would spit out an html sandwich of the header, all the posts, and the footer, which I would then manually upload to <a href='https://en.wikipedia.org/wiki/GeoCities'>Geocities</a>. Of course, being only like 12 at the time and just starting out, it was super janky, but it worked and I was happy.</p>
+
+<p>So I&#8217;ve been tinkering around with Jekyll as mentioned before and I think I got a pretty good workflow going on, so I thought I might share it.</p>
+
+<h3 id='a_little_about_my_site'>A little about my site:</h3>
+
+<ul>
+<li>
+<p>powered by <a href='http://jekyllrb.com'>jekyll</a></p>
+</li>
+
+<li>
+<p>using <a href='http://designmodo.github.io/Flat-UI/'>flat-ui</a> for styling</p>
+</li>
+
+<li>
+<p>three layouts</p>
+
+<ul>
+<li>the default, which is the layout for viewing multiple posts or projects</li>
+
+<li>the post, which is the layout for viewing single posts</li>
+
+<li>the project, which is the layout for viewing single projects</li>
+</ul>
+</li>
+</ul>
+
+<h3 id='now_the_setup'>Now the setup:</h3>
+
+<p>I have my blog as a git repository.</p>
+
+<p>I have a remote git repository on my server that I have set up with a post-receive hook on it that I stole from <a href='http://web.archive.org/web/20091223025644/http://www.taknado.com/en/2009/03/26/deploying-a-jekyll-generated-site/'>here</a>.</p>
+
+<p>I have a script to add that I stole from <a href='http://minhajuddin.com/2010/10/01/helper-script-to-create-new-posts-using-jekyll'>here</a> and modified to automatically add the post to git and open the resulting file in Sublime Text.</p>
+
+<p>I have Sublime Text installed with the <a href='https://github.com/revolunet/sublimetext-markdown-preview'>Markdown Preview</a> plugin installed. Make sure you have the Live Reload plugin installed as well. The only weird this with this is that Markdown Preview completely barfs when it tries to read your YAML front matter. Oh well.</p>
+
+<p>My workflow looks something like this: <pre>
+  $MY_WEBSITE_REPO/tools/add_script.rb
+  # This opens up a Sublime Text window with the newly created post opened
+  # I bring up Markdown Preview, which brings up a browser which renders the markdown on each save
+  # When I'm done writing:
+  git commit -m "My new post"
+  git push toserver
+</pre></p>
+
+<p>Once I push, the post-receive hook kicks in, generates the site and moves it to the appropriate location if the compilation was successful. My site has been updated with my new post. Pretty sweet if you ask me!</p>
+
+<p><em>I&#8217;ve seen how easy it is to use plugins but I haven&#8217;t used any yet. I&#8217;ll let you know how that turns out</em></p>
+
+<h3 id='the_not_so_good'>The not so good</h3>
+
+<p>But, here are the not so cool things that I&#8217;ve found:</p>
+
+<ul>
+<li>Adding images is not so fun. It&#8217;s not as braindead as it was in wordpress.</li>
+
+<li>While the framework is pretty flexible, its still blog oriented, so it&#8217;s limited to blog-like websites.</li>
+
+<li>Migrating my wordpress was a pain. I used <a href='https://github.com/thomasf/exitwp'>exitwp</a>, but there was still alot of manual work that I needed to do and all my image links are broken.</li>
+</ul>
+
+<p>Since, I&#8217;ve streamlined my blogging process as much as I can, hopefully that will drive me to write more to this thing. I have a couple of things that I really want to show regarding fantasy basketball that I&#8217;ve been refining over the course of the last season.</p>
+      </div>
+
+      <div class="row-fluid">
+        
+          <span class="tag muted">wordpress</span>
+        
+          <span class="tag muted">jekyll</span>
+        
+          <span class="tag muted">blog</span>
+        
+      </div>
+
+      <hr>
+
+      <div class="footer">
+        <p>&copy; Doug Kang 2013</p>
+      </div>
+
+    </div> <!-- /container -->
+
+    <script src="/js/jquery-1.8.2.min.js"></script>
+    <script src="/js/bootstrap-tooltip.js"></script>
+
+  </body>
+</html>
