@@ -1,4 +1,4 @@
-@import url("http://fonts.googleapis.com/css?family=Lato:400,700,900,400italic");
+@import url("http://fonts.googleapis.com/css?family=Merriweather:400,700,900|Open+Sans:400,700,800");
 @font-face {
   font-family: "Flat-UI-Icons-16";
   src: url("../fonts/Flat-UI-Icons-16.eot");
@@ -177,7 +177,7 @@
 
 body {
   color: #2c3e50;
-  font: 14px/1.231 "Lato", sans-serif; }
+  font: 14px/1.231 "Merriweather", sans-serif; }
 
 a {
   color: #2980b9;
@@ -192,16 +192,16 @@ a {
     text-decoration: none; }
 
 h1 {
-  font-size: 32px;
+  font-size: 26px;
   font-weight: 900; }
 
 h2 {
-  font-size: 26px;
+  font-size: 22px;
   font-weight: 700;
   margin-bottom: 2px; }
 
 h3 {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 700;
   margin-bottom: 4px;
   margin-top: 2px; }
@@ -808,7 +808,7 @@ input[type="color"],
 .uneditable-input {
   border: 2px solid #dae2ea;
   color: #2c3e50;
-  font-family: "Oswald", sans-serif;
+  font-family: "Merriweather", sans-serif;
   font-size: 14px;
   padding: 8px 0 9px 10px;
   text-indent: 1px;
@@ -1273,7 +1273,7 @@ textarea,
     background: transparent;
     border: none;
     color: #2c3e50;
-    font-family: "Oswald", sans-serif;
+    font-family: "Merriweather", sans-serif;
     font-size: 14px;
     margin: 0px;
     padding: 0 0 0 5px;
@@ -1939,7 +1939,7 @@ body.vjs-full-window {
   bottom: 4em;
   left: 1em;
   right: 1em;
-  font-family: "Oswald", sans-serif; }
+  font-family: "Merriweather", sans-serif; }
 .video-js .vjs-text-track {
   display: none;
   color: white;
@@ -2155,7 +2155,7 @@ body.vjs-full-window {
   height: 20px;
   width: 50px;
   top: 16px;
-  font: 300 13px "Oswald", sans-serif; }
+  font: 300 13px "Merriweather", sans-serif; }
 
 .vjs-current-time {
   right: 128px;
